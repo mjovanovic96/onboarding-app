@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "dgSpecHash": "LGgN+Vrh3H40Djlf35Pv2gfwQY6pkFPgyTeP5hEgmkTptC4zyMt256uqVV+hdIxD4A4HRZbi71xNwn9zmqeUAA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\mjovanovic\\source\\repos\\FoodOrderApp\\Stateless1\\Stateless1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mjovanovic\\.nuget\\packages\\microsoft.servicefabric\\8.1.335\\microsoft.servicefabric.8.1.335.nupkg.sha512",
+    "C:\\Users\\mjovanovic\\.nuget\\packages\\microsoft.servicefabric.data\\5.1.335\\microsoft.servicefabric.data.5.1.335.nupkg.sha512",
+    "C:\\Users\\mjovanovic\\.nuget\\packages\\microsoft.servicefabric.data.extensions\\5.1.335\\microsoft.servicefabric.data.extensions.5.1.335.nupkg.sha512",
+    "C:\\Users\\mjovanovic\\.nuget\\packages\\microsoft.servicefabric.data.interfaces\\5.1.335\\microsoft.servicefabric.data.interfaces.5.1.335.nupkg.sha512",
+    "C:\\Users\\mjovanovic\\.nuget\\packages\\microsoft.servicefabric.diagnostics.internal\\5.1.335\\microsoft.servicefabric.diagnostics.internal.5.1.335.nupkg.sha512",
+    "C:\\Users\\mjovanovic\\.nuget\\packages\\microsoft.servicefabric.services\\5.1.335\\microsoft.servicefabric.services.5.1.335.nupkg.sha512",
+    "C:\\Users\\mjovanovic\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\mjovanovic\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\3.1.0\\microsoft.netcore.app.runtime.win-x64.3.1.0.nupkg.sha512",
+    "C:\\Users\\mjovanovic\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\3.1.0\\microsoft.aspnetcore.app.runtime.win-x64.3.1.0.nupkg.sha512",
+    "C:\\Users\\mjovanovic\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\3.1.0\\microsoft.windowsdesktop.app.runtime.win-x64.3.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

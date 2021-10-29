@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StartupServicesManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <Parameter Name="FrontService_InstanceCount" DefaultValue="-1" />
+    <Parameter Name="OrderCartService_MinReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="OrderCartService_PartitionCount" DefaultValue="1" />
+    <Parameter Name="OrderCartService_TargetReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="FoodMenuService_MinReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="FoodMenuService_PartitionCount" DefaultValue="1" />
+    <Parameter Name="FoodMenuService_TargetReplicaSetSize" DefaultValue="3" />
+  </Parameters>
+  <Services>
+    <Service Name="FrontService" ServicePackageActivationMode="ExclusiveProcess">
+      <StatelessService ServiceTypeName="FrontServiceType" InstanceCount="[FrontService_InstanceCount]">
+        <SingletonPartition />
+      </StatelessService>
+    </Service>
+    <Service Name="OrderCartService" ServicePackageActivationMode="ExclusiveProcess">
+      <StatefulService ServiceTypeName="OrderCartServiceType" TargetReplicaSetSize="[OrderCartService_TargetReplicaSetSize]" MinReplicaSetSize="[OrderCartService_MinReplicaSetSize]">
+        <UniformInt64Partition PartitionCount="[OrderCartService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+        <ServiceScalingPolicies>
+          <ScalingPolicy>
+            <AverageServiceLoadScalingTrigger MetricName="CartsCount" LowerLoadThreshold="3" UpperLoadThreshold="10" ScaleIntervalInSeconds="60" />
+            <AddRemoveIncrementalNamedPartitionScalingMechanism MinPartitionCount="1" MaxPartitionCount="5" ScaleIncrement="1" />
+          </ScalingPolicy>
+        </ServiceScalingPolicies>
+      </StatefulService>
+    </Service>
+    <Service Name="FoodMenuService" ServicePackageActivationMode="ExclusiveProcess">
+      <StatefulService ServiceTypeName="FoodMenuServiceType" TargetReplicaSetSize="[FoodMenuService_TargetReplicaSetSize]" MinReplicaSetSize="[FoodMenuService_MinReplicaSetSize]">
+        <UniformInt64Partition PartitionCount="[FoodMenuService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+      </StatefulService>
+    </Service>
+  </Services>
+</StartupServicesManifest>
