@@ -2,9 +2,9 @@
 <StartupServicesManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="FrontService_InstanceCount" DefaultValue="-1" />
-    <Parameter Name="OrderCartService_MinReplicaSetSize" DefaultValue="3" />
-    <Parameter Name="OrderCartService_PartitionCount" DefaultValue="1" />
-    <Parameter Name="OrderCartService_TargetReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="OrderCartService_MinReplicaSetSize" DefaultValue="2" />
+    <Parameter Name="OrderCartService_PartitionCount" DefaultValue="2" />
+    <Parameter Name="OrderCartService_TargetReplicaSetSize" DefaultValue="5" />
     <Parameter Name="FoodMenuService_MinReplicaSetSize" DefaultValue="3" />
     <Parameter Name="FoodMenuService_PartitionCount" DefaultValue="1" />
     <Parameter Name="FoodMenuService_TargetReplicaSetSize" DefaultValue="3" />
@@ -16,8 +16,8 @@
       </StatelessService>
     </Service>
     <Service Name="OrderCartService" ServicePackageActivationMode="ExclusiveProcess">
-      <StatefulService ServiceTypeName="OrderCartServiceType" TargetReplicaSetSize="[OrderCartService_TargetReplicaSetSize]" MinReplicaSetSize="[OrderCartService_MinReplicaSetSize]">
-        <UniformInt64Partition PartitionCount="[OrderCartService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+      <StatefulService ServiceTypeName="OrderCartServiceType" TargetReplicaSetSize="5" MinReplicaSetSize="1">
+        <UniformInt64Partition PartitionCount="2" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
         <ServiceScalingPolicies>
           <ScalingPolicy>
             <AverageServiceLoadScalingTrigger MetricName="CartsCount" LowerLoadThreshold="3" UpperLoadThreshold="10" ScaleIntervalInSeconds="60" />

@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ServiceManifest Name="FoodMenuServicePkg" Version="1.0.32" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ManifestId="69b6b677-fd27-44b3-99e3-8abcfae1aa96">
+<ServiceManifest Name="FoodMenuServicePkg" Version="2.0.6" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ManifestId="69b6b677-fd27-44b3-99e3-8abcfae1aa96">
   <ServiceTypes>
     <!-- This is the name of your ServiceType. 
          This name must match the string used in RegisterServiceType call in Program.cs. -->
     <StatefulServiceType ServiceTypeName="FoodMenuServiceType" HasPersistedState="true" />
   </ServiceTypes>
   <!-- Code package is your service executable. -->
-  <CodePackage Name="Code" Version="1.0.35">
+  <CodePackage Name="Code" Version="2.0.5">
     <EntryPoint>
       <ExeHost>
         <Program>FoodMenuService.exe</Program>
@@ -19,5 +19,5 @@
   </CodePackage>
   <!-- Config package is the contents of the Config directory under PackageRoot that contains an 
        independently-updateable and versioned set of custom configuration settings for your service. -->
-  <ConfigPackage Name="Config" Version="1.0.5" />
+  <ConfigPackage Name="Config" Version="2.0.3" />
 </ServiceManifest>

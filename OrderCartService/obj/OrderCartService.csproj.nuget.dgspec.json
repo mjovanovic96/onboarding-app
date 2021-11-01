@@ -1,14 +1,14 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mjovanovic\\source\\repos\\FoodOrderApp\\OrderCartService\\OrderCartService.csproj": {}
+    "C:\\Users\\Marko\\source\\repos\\onboarding-app\\OrderCartService\\OrderCartService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mjovanovic\\source\\repos\\FoodOrderApp\\ClassLibrary\\ClassLibrary.csproj": {
+    "C:\\Users\\Marko\\source\\repos\\onboarding-app\\ClassLibrary\\ClassLibrary.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\mjovanovic\\source\\repos\\FoodOrderApp\\ClassLibrary\\ClassLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\Marko\\source\\repos\\onboarding-app\\ClassLibrary\\ClassLibrary.csproj",
         "projectName": "ClassLibrary",
-        "projectPath": "C:\\Users\\mjovanovic\\source\\repos\\FoodOrderApp\\ClassLibrary\\ClassLibrary.csproj",
+        "projectPath": "C:\\Users\\Marko\\source\\repos\\onboarding-app\\ClassLibrary\\ClassLibrary.csproj",
         "frameworks": {
           "net472": {
             "projectReferences": {}
@@ -19,37 +19,32 @@
         "net472": {}
       }
     },
-    "C:\\Users\\mjovanovic\\source\\repos\\FoodOrderApp\\OrderCartService\\OrderCartService.csproj": {
+    "C:\\Users\\Marko\\source\\repos\\onboarding-app\\OrderCartService\\OrderCartService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mjovanovic\\source\\repos\\FoodOrderApp\\OrderCartService\\OrderCartService.csproj",
+        "projectUniqueName": "C:\\Users\\Marko\\source\\repos\\onboarding-app\\OrderCartService\\OrderCartService.csproj",
         "projectName": "OrderCartService",
-        "projectPath": "C:\\Users\\mjovanovic\\source\\repos\\FoodOrderApp\\OrderCartService\\OrderCartService.csproj",
-        "packagesPath": "C:\\Users\\mjovanovic\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mjovanovic\\source\\repos\\FoodOrderApp\\OrderCartService\\obj\\",
+        "projectPath": "C:\\Users\\Marko\\source\\repos\\onboarding-app\\OrderCartService\\OrderCartService.csproj",
+        "packagesPath": "C:\\Users\\Marko\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Marko\\source\\repos\\onboarding-app\\OrderCartService\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\mjovanovic\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config"
+          "C:\\Users\\Marko\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\mjovanovic\\source\\repos\\FoodOrderApp\\ClassLibrary\\ClassLibrary.csproj": {
-                "projectPath": "C:\\Users\\mjovanovic\\source\\repos\\FoodOrderApp\\ClassLibrary\\ClassLibrary.csproj"
+              "C:\\Users\\Marko\\source\\repos\\onboarding-app\\ClassLibrary\\ClassLibrary.csproj": {
+                "projectPath": "C:\\Users\\Marko\\source\\repos\\onboarding-app\\ClassLibrary\\ClassLibrary.csproj"
               }
             }
           }
