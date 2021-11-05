@@ -242,6 +242,8 @@ if ($RegisterApplicationTypeTimeoutSec)
     $PublishParameters['RegisterApplicationTypeTimeoutSec'] = $RegisterApplicationTypeTimeoutSec
 }
 
+$OverwriteBehavior='Always'
+
 if ($IsUpgrade)
 {
     if ($StartupServicesFile)

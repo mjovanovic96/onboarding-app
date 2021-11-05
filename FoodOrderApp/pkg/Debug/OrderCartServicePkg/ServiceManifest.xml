@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ServiceManifest Name="OrderCartServicePkg" Version="2.0.6" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ManifestId="47bfca77-8f92-41cd-b8f2-beb3905c9bc7">
+<ServiceManifest Name="OrderCartServicePkg" Version="5.0.1" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ManifestId="47bfca77-8f92-41cd-b8f2-beb3905c9bc7">
   <ServiceTypes>
     <!-- This is the name of your ServiceType. 
          This name must match the string used in RegisterServiceType call in Program.cs. -->
     <StatefulServiceType ServiceTypeName="OrderCartServiceType" HasPersistedState="true">
       <LoadMetrics>
-        <LoadMetric Name="CartsCount" Weight="High" PrimaryDefaultLoad="5" SecondaryDefaultLoad="2" />
+        <LoadMetric Name="CartsCount" Weight="High" PrimaryDefaultLoad="0" SecondaryDefaultLoad="0" />
       </LoadMetrics>
     </StatefulServiceType>
   </ServiceTypes>
   <!-- Code package is your service executable. -->
-  <CodePackage Name="Code" Version="2.0.6">
+  <CodePackage Name="Code" Version="5.0.1">
     <EntryPoint>
       <ExeHost>
         <Program>OrderCartService.exe</Program>
@@ -23,5 +23,5 @@
   </CodePackage>
   <!-- Config package is the contents of the Config directory under PackageRoot that contains an 
        independently-updateable and versioned set of custom configuration settings for your service. -->
-  <ConfigPackage Name="Config" Version="2.0.3" />
+  <ConfigPackage Name="Config" Version="5.0.1" />
 </ServiceManifest>

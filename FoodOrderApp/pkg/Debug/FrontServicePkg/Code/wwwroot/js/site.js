@@ -6,18 +6,15 @@ app.controller('FoodMenuCartController', ['$scope', '$http', function ($scope, $
         $http.get('api/FoodMenu')
             .then((response) => {
                 $scope.foodMenu = response.data;
-                console.log("Food Menu Response");
-                console.log(response);
             }, (error) => {
                 $scope.foodMenu = undefined;
                 console.log(error);
             });
 
         $http.get('/api/Carts')
-            .then((response) => {
+            .then(
+                (response) => {
                 $scope.cart = response.data;
-                console.log("Cart response");
-                console.log(response);
             },
                 (error) => {
                     $scope.cart = undefined;
@@ -28,29 +25,36 @@ app.controller('FoodMenuCartController', ['$scope', '$http', function ($scope, $
     $http.removeItemFromMenu = function (name) {
         $http.delete('api/FoodMenu/' + name)
             .then(function (data, status) {
-                // $scope.refresh();
+                window.location.reload();
             })
     };
 
     $http.updateMenu = function (item) {
         $http.post('api/FoodMenu', item)
             .then(function (data, status) {
-                // $scope.refresh();
+                window.location.reload();
             });
     };
 
     $http.removeItemFromCart = function (name) {
         $http.delete('api/Carts/' + name)
             .then(function (data, status) {
-                // $scope.refresh();
+                $window.location.reload();
             })
     };
 
     $http.updateCart = function (item) {
         $http.post('api/Carts', item)
             .then(function (data, status) {
-                // $scope.refresh();
+                window.location.reload();
             });
+    };
+
+    $http.removeCart = function () {
+        $http.delete('api/Carts/')
+            .then(function (data, status) {
+                window.location.reload();
+            })
     };
 
 
@@ -68,5 +72,9 @@ app.controller('FoodMenuCartController', ['$scope', '$http', function ($scope, $
 
     $scope.removeFromCart = function (item) {
         $http.removeItemFromCart(item.name);
+    }
+
+    $scope.removeCart = function () {
+        $http.removeCart();
     }
 }]);

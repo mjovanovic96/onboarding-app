@@ -6,7 +6,6 @@ C:\Users\mjovanovic\source\repos\FoodOrderApp\ClassLibrary\obj\Debug\ClassLibrar
 C:\Users\mjovanovic\source\repos\FoodOrderApp\ClassLibrary\obj\Debug\ClassLibrary.pdb
 C:\Users\Marko\source\repos\onboarding-app\ClassLibrary\bin\Debug\ClassLibrary.dll
 C:\Users\Marko\source\repos\onboarding-app\ClassLibrary\bin\Debug\ClassLibrary.pdb
-C:\Users\Marko\source\repos\onboarding-app\ClassLibrary\obj\Debug\ClassLibrary.csproj.AssemblyReference.cache
 C:\Users\Marko\source\repos\onboarding-app\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
 C:\Users\Marko\source\repos\onboarding-app\ClassLibrary\obj\Debug\ClassLibrary.dll
 C:\Users\Marko\source\repos\onboarding-app\ClassLibrary\obj\Debug\ClassLibrary.pdb

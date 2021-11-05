@@ -1,29 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="FoodOrderAppType" ApplicationTypeVersion="2.0.6" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="FoodOrderAppType" ApplicationTypeVersion="5.0.1" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="FrontService_ASPNETCORE_ENVIRONMENT" DefaultValue="" />
     <Parameter Name="OrderCartService_ASPNETCORE_ENVIRONMENT" DefaultValue="" />
     <Parameter Name="FoodMenuService_ASPNETCORE_ENVIRONMENT" DefaultValue="" />
+    <Parameter Name="FrontService_InstanceCount" DefaultValue="1" />
+    <Parameter Name="OrderCartService_MinReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="OrderCartService_PartitionCount" DefaultValue="1" />
+    <Parameter Name="OrderCartService_TargetReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="FoodMenuService_MinReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="FoodMenuService_PartitionCount" DefaultValue="1" />
+    <Parameter Name="FoodMenuService_TargetReplicaSetSize" DefaultValue="3" />
   </Parameters>
   <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="FrontServicePkg" ServiceManifestVersion="2.0.6" />
+    <ServiceManifestRef ServiceManifestName="FrontServicePkg" ServiceManifestVersion="5.0.1" />
     <ConfigOverrides />
     <EnvironmentOverrides CodePackageRef="code">
       <EnvironmentVariable Name="ASPNETCORE_ENVIRONMENT" Value="[FrontService_ASPNETCORE_ENVIRONMENT]" />
     </EnvironmentOverrides>
   </ServiceManifestImport>
   <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="OrderCartServicePkg" ServiceManifestVersion="2.0.6" />
+    <ServiceManifestRef ServiceManifestName="OrderCartServicePkg" ServiceManifestVersion="5.0.1" />
     <ConfigOverrides />
     <EnvironmentOverrides CodePackageRef="code">
       <EnvironmentVariable Name="ASPNETCORE_ENVIRONMENT" Value="[OrderCartService_ASPNETCORE_ENVIRONMENT]" />
     </EnvironmentOverrides>
   </ServiceManifestImport>
   <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="FoodMenuServicePkg" ServiceManifestVersion="2.0.6" />
+    <ServiceManifestRef ServiceManifestName="FoodMenuServicePkg" ServiceManifestVersion="5.0.1" />
     <ConfigOverrides />
     <EnvironmentOverrides CodePackageRef="code">
       <EnvironmentVariable Name="ASPNETCORE_ENVIRONMENT" Value="[FoodMenuService_ASPNETCORE_ENVIRONMENT]" />
     </EnvironmentOverrides>
   </ServiceManifestImport>
+  <DefaultServices>
+    <Service Name="FrontService" ServicePackageActivationMode="ExclusiveProcess">
+      <StatelessService ServiceTypeName="FrontServiceType" InstanceCount="[FrontService_InstanceCount]">
+        <SingletonPartition />
+		  <ServiceScalingPolicies>
+			  <ScalingPolicy>
+				  <AveragePartitionLoadScalingTrigger MetricName="RequestsCount" LowerLoadThreshold="10" UpperLoadThreshold="20" ScaleIntervalInSeconds="60"/>
+				  <InstanceCountScalingMechanism MinInstanceCount="1" MaxInstanceCount="7" ScaleIncrement="1"/>
+			  </ScalingPolicy>
+		  </ServiceScalingPolicies>
+      </StatelessService>
+    </Service>
+    <Service Name="OrderCartService" ServicePackageActivationMode="ExclusiveProcess">
+      <StatefulService ServiceTypeName="OrderCartServiceType" TargetReplicaSetSize="[OrderCartService_TargetReplicaSetSize]" MinReplicaSetSize="[OrderCartService_MinReplicaSetSize]">
+        <!--<UniformInt64Partition PartitionCount="[OrderCartService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />-->
+		  <NamedPartition>
+			  <Partition Name="0"/>
+			  <Partition Name="1"/>
+		  </NamedPartition>
+        <!--<ServiceScalingPolicies>
+          <ScalingPolicy>
+            <AverageServiceLoadScalingTrigger MetricName="CartsCount" LowerLoadThreshold="3" UpperLoadThreshold="10" ScaleIntervalInSeconds="60" />
+            <AddRemoveIncrementalNamedPartitionScalingMechanism MinPartitionCount="2" MaxPartitionCount="5" ScaleIncrement="1" />
+          </ScalingPolicy>
+        </ServiceScalingPolicies>-->
+      </StatefulService>
+    </Service>
+    <Service Name="FoodMenuService" ServicePackageActivationMode="ExclusiveProcess">
+      <StatefulService ServiceTypeName="FoodMenuServiceType" TargetReplicaSetSize="[FoodMenuService_TargetReplicaSetSize]" MinReplicaSetSize="[FoodMenuService_MinReplicaSetSize]">
+        <UniformInt64Partition PartitionCount="[FoodMenuService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+      </StatefulService>
+    </Service>
+  </DefaultServices>
 </ApplicationManifest>

@@ -2,15 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Fabric;
 using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.ServiceFabric.Services.Communication.AspNetCore;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using Microsoft.ServiceFabric.Services.Runtime;
 using Microsoft.ServiceFabric.Data;
+using System.Fabric.Description;
 
 namespace OrderCartService
 {
@@ -55,6 +53,43 @@ namespace OrderCartService
         public void setCountCartsMetric(int value)
         {
             this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("CartsCount", value) });
+        }
+
+        private void DefinePolicies()
+        {
+            Uri orderCartServiceName = GetOrderCartServiceName(Context);
+            FabricClient fabricClient = new FabricClient();
+
+            AverageServiceLoadScalingTrigger trigger = new AverageServiceLoadScalingTrigger
+            {
+                MetricName = "CartsCount",
+                ScaleInterval = TimeSpan.FromMinutes(1),
+                LowerLoadThreshold = 3,
+                UpperLoadThreshold = 10
+            };
+
+            AddRemoveIncrementalNamedPartitionScalingMechanism mechanism = new AddRemoveIncrementalNamedPartitionScalingMechanism
+            {
+                MaxPartitionCount = 5,
+                MinPartitionCount = 1,
+                ScaleIncrement = 1
+            };
+            
+            ScalingPolicyDescription policy = new ScalingPolicyDescription(mechanism, trigger);
+            StatefulServiceUpdateDescription updateServiceDescription = new StatefulServiceUpdateDescription();
+
+            if (updateServiceDescription.ScalingPolicies == null)
+            {
+                updateServiceDescription.ScalingPolicies = new List<ScalingPolicyDescription>();
+            }
+            updateServiceDescription.ScalingPolicies.Add(policy);
+
+            fabricClient.ServiceManager.UpdateServiceAsync(orderCartServiceName, updateServiceDescription);
+        }
+
+        internal static Uri GetOrderCartServiceName(ServiceContext context)
+        {
+            return new Uri($"{context.CodePackageActivationContext.ApplicationName}/OrderCartService");
         }
     }
 }

@@ -17,7 +17,7 @@
                 <div class="col-sm-12 col-lg-4 col-md-6" ng-repeat="item in foodMenu.items">
                     <div class="food-item-wrapper">
                         <div class="image">
-                            <!-- <img src="{{ item.ImageUrl }}" alt="">-->
+                            <img src="{{ item.imageUrl }}" alt="">
                         </div>
                         <div class="details">
                             <div class="title">
@@ -31,7 +31,7 @@
                             </div>
                         </div>
                         <div class="cart-icon">
-                            <img src="/images/cart_icon.jpg" ng-click="addToCart(item)" alt="">
+                            <img src="https://static.thenounproject.com/png/70771-200.png" ng-click="addToCart(item)" alt="">
                         </div>
                     </div>
                 </div>
@@ -46,10 +46,15 @@
             <hr/>
 
             <div class="row" ng-model="cart">
+                <div class="col-sm-12 text-center">
+                    <div>
+                        <img style="width: 80px" src="https://www.clipartmax.com/png/small/270-2708193_remove-shopping-cart-icon-market-basket.png" ng-click="removeCart()" ng-if="cart.items.length > 0"/>
+                    </div>
+                </div>
                 <div class="col-sm-12 col-lg-4 col-md-6" ng-repeat="item in cart.items">
                     <div class="food-item-wrapper">
                         <div class="image">
-                            <!-- <img src="{{ item.ImageUrl }}" alt="">-->
+                            <img src="{{ item.imageUrl }}" alt="">
                         </div>
                         <div class="details">
                             <div class="title">
@@ -63,7 +68,7 @@
                             </div>
                         </div>
                         <div class="cart-icon">
-                            <img src="/images/cart_icon.jpg" ng-click="removeFromCart(item)" alt="">
+                            <img src="https://static.thenounproject.com/png/70770-200.png" ng-click="removeFromCart(item)" alt="">
                         </div>
                     </div>
                 </div>
